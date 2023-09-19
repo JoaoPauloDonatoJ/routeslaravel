@@ -20,27 +20,27 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/user/{id}', function ($id) {
     return view('user', ['id' => $id]);
-});
+})->name('user.profile');
 
 Route::get('/post/{slug}', function ($slug) {
     return view('blog');
-});
+})->name('blog.post');
 
 Route::get('/category/{category}', function ($category) {
-    return view('blog.category');
-});
+    return view('category');
+})->name('blog.category');
 
 Route::get('/user/{id}/language/{lang?}', function ($id, $lang = null) {
     return view('language',['id' => $id], ['lang' => $lang]);
-});
+})->name('user.profile.language');
 
 Route::get('/products/{category}/{minPrice?}', function ($category, $minPrice = null) {
     return view('price',['category' => $category], ['minPrice' => $minPrice]);
-});
+})->name('products.category.price');;
 
 Route::get('/page/{page}', function ($page) {
     if(ctype_digit($page)) {
@@ -72,7 +72,7 @@ Route::get('/sum/{number1}/{number2}', function ($number1, $number2) {
     } else {
         abort(404);
     }
-});
+})->name('sum.numbers');
 
 Route::get('/mensagem/{message}', function ($message) {
     echo $message;
